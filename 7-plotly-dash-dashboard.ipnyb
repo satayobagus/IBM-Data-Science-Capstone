@@ -84,7 +84,8 @@ def get_scatter_chart(entered_site, slider_value) :
         color="Booster Version Category",
         title='Correlation between Payload and Success for all sites')
     else:
-        fig2 = px.scatter(scatter_df[scatter_df["Launch Site"]==entered_site & scatter_df["Payload Mass (kg)"].between(slider_value[0], slider_value[1])], 
+        scatter_filtered = scatter_df[scatter_df["Launch Site"]==entered_site]
+        fig2 = px.scatter(scatter_filtered[scatter_filtered["Payload Mass (kg)"].between(slider_value[0], slider_value[1])], 
         x='Payload Mass (kg)', 
         y='class', 
         color="Booster Version Category",
